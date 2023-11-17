@@ -36,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                openHomeActivity();
+                openLanguageActivity();
                 // Finish the current activity
                 finish();
             }
         }, getGifDuration(R.raw.pangea));
     }
 
-    private void openHomeActivity() {
-        // Start the HomeActivity
-        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+    private void openLanguageActivity() {
+        // Start the LanguageActivity
+        Intent intent = new Intent(MainActivity.this, LanguageActivity.class);
         startActivity(intent);
     }
 

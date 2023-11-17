@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- Pangea Full Logo -->
+    <ImageView
+        android:id="@+id/pangeaFullLogo"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/pangeafull" />
+
+    <!-- Choose Your Language Heading -->
+    <TextView
+        android:id="@+id/chooseLanguageHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pangeaFullLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Choose Your Language"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Buttons Container -->
+    <LinearLayout
+        android:id="@+id/buttonsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chooseLanguageHeading"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- English Button -->
+        <Button
+            android:id="@+id/englishButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_selector"
+            android:fontFamily="@font/aclonica"
+            android:text="English"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:cornerRadius="50dp" />
+
+        <!-- Hindi Button -->
+        <Button
+            android:id="@+id/hindiButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_selector"
+            android:fontFamily="@font/aclonica"
+            android:text="Hindi"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:cornerRadius="50dp" />
+
+
+
+    </LinearLayout>
+
+    <!-- Next Button -->
+    <ImageButton
+        android:id="@+id/nextButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/buttonsContainer"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="251dp"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="#000000"
+        android:contentDescription="Next Button"
+        android:scaleType="fitCenter"
+        android:src="@drawable/rarrow"
+        android:tint="@color/deep_red_accent" />
+
+</RelativeLayout>

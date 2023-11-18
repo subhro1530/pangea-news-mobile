@@ -30,7 +30,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private static final String API_KEY = "17e5786f01adec6fc3b5c4421cf147d1"; // Replace with your actual GNews API key
+//    private static final String API_KEY = "17e5786f01adec6fc3b5c4421cf147d1"; // Replace with your actual GNews API key
+    private static final String API_KEY = "f5b874a8cc8c944a5ef4fcf58b8a59b9"; // Replace with your actual GNews API key
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private NewsApi newsApi;

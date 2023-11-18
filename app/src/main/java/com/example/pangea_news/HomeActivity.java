@@ -1,5 +1,7 @@
 package com.example.pangea_news;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -7,12 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.bumptech.glide.Glide;
 import com.example.pangea_news.network.Article;
@@ -40,6 +44,18 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        ImageView languageButton = findViewById(R.id.languageButton);
+
+        // Set OnClickListener for the language button
+        languageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the LanguageActivity when the language button is clicked
+                Intent intent = new Intent(HomeActivity.this, LanguageActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // Retrieve selected language and country from Intent
         String selectedLanguage = getIntent().getStringExtra("SELECTED_LANGUAGE");
         String selectedCountry = getIntent().getStringExtra("SELECTED_COUNTRY");
@@ -54,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
         fetchAndDisplayNews(selectedLanguage, selectedCountry);
 
         // Refresh Button
-        Button refreshButton = findViewById(R.id.refreshButton);
+        AppCompatImageButton refreshButton = findViewById(R.id.refreshButton);
         refreshButton.setOnClickListener(v -> {
             // Retrieve selected language and country from Intent
             String refreshedLanguage = getIntent().getStringExtra("SELECTED_LANGUAGE");
@@ -135,7 +151,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void displayNews(List<Article> articles) {
-        LinearLayout newsContainer = findViewById(R.id.newsContainer);
+        ScrollView newsScrollView = findViewById(R.id.newsScrollView);
+        LinearLayout newsContainer = newsScrollView.findViewById(R.id.newsContainer);
+
         newsContainer.removeAllViews(); // Clear existing views before adding new ones
 
         for (Article article : articles) {

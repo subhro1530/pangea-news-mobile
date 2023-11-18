@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +17,6 @@ public class LanguageActivity extends AppCompatActivity {
 
         Button englishButton = findViewById(R.id.englishButton);
         Button hindiButton = findViewById(R.id.hindiButton);
-        ImageButton nextButton = findViewById(R.id.nextButton);
 
         englishButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,20 +40,6 @@ public class LanguageActivity extends AppCompatActivity {
 
                 // Example: Show a toast message
                 Toast.makeText(LanguageActivity.this, "Selected Language: Hindi", Toast.LENGTH_SHORT).show();
-
-                // Start HomeActivity and pass the selected language
-                startHomeActivity(selectedLanguage);
-            }
-        });
-
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Default to English if no language is selected
-                String selectedLanguage = "en";
-
-                // Example: Show a toast message
-                Toast.makeText(LanguageActivity.this, "Selected Language: English (Default)", Toast.LENGTH_SHORT).show();
 
                 // Start HomeActivity and pass the selected language
                 startHomeActivity(selectedLanguage);

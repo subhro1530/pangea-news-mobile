@@ -69,25 +69,5 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:cornerRadius="50dp" />
-
-
-
     </LinearLayout>
-
-    <!-- Next Button -->
-    <ImageButton
-        android:id="@+id/nextButton"
-        android:layout_width="50dp"
-        android:layout_height="26dp"
-        android:layout_below="@+id/buttonsContainer"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="163dp"
-        android:layout_marginBottom="196dp"
-        android:backgroundTint="#000000"
-        android:contentDescription="Next Button"
-        android:scaleType="fitCenter"
-        android:src="@drawable/rarrow"
-        android:tint="@color/deep_red_accent" />
-
 </RelativeLayout>

@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_top_news"
+        android:title="Top News" />
+    <item
+        android:id="@+id/nav_world"
+        android:title="World" />
+    <item
+        android:id="@+id/nav_india"
+        android:title="India" />
+    <item
+        android:id="@+id/refreshButton"
+        android:title="Refresh"/>
+
+    <!-- Add other menu items as needed -->
+</menu>

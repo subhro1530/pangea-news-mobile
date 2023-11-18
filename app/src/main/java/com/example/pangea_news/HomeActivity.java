@@ -2,17 +2,23 @@ package com.example.pangea_news;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.pangea_news.network.Article;
 import com.example.pangea_news.network.NewsApi;
 import com.example.pangea_news.network.NewsResponse;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
@@ -25,11 +31,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HomeActivity extends AppCompatActivity {
 
     private static final String API_KEY = "17e5786f01adec6fc3b5c4421cf147d1"; // Replace with your actual GNews API key
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private NewsApi newsApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        navigationView = findViewById(R.id.navigationView);
 
         // Initialize Retrofit
         Retrofit retrofit = new Retrofit.Builder()
@@ -38,14 +50,46 @@ public class HomeActivity extends AppCompatActivity {
                 .build();
 
         // Create the NewsApi service
-        NewsApi newsApi = retrofit.create(NewsApi.class);
+        newsApi = retrofit.create(NewsApi.class);
 
+        // Set up the sidebar toggle
+        ImageView sidebarImageView = findViewById(R.id.sidebarImageView);
+        sidebarImageView.setOnClickListener(v -> {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_top_news:
+                    // Handle Top News click
+                    break;
+                case R.id.nav_world:
+                    // Handle World click
+                    break;
+                case R.id.nav_india:
+                    // Handle India click
+                    break;
+                // Add cases for other menu items
+            }
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        });
+
+        // Fetch and display news on initial load
+        fetchAndDisplayNews();
+
+        // Refresh Button
+        Button refreshButton = findViewById(R.id.refreshButton);
+        refreshButton.setOnClickListener(v -> fetchAndDisplayNews());
+    }
+
+    private void fetchAndDisplayNews() {
         // Make the network request for top headlines
         Call<NewsResponse> call = newsApi.getTopHeadlines("general", "en", "in", 10, API_KEY);
-
-        // Print the full URL for testing
-        String url = call.request().url().toString();
-        Log.d("Full URL", url);
 
         call.enqueue(new Callback<NewsResponse>() {
             @Override
@@ -66,12 +110,12 @@ public class HomeActivity extends AppCompatActivity {
                 t.printStackTrace();
                 // Handle failure
             }
-
         });
     }
 
     private void displayNews(List<Article> articles) {
         LinearLayout newsContainer = findViewById(R.id.newsContainer);
+        newsContainer.removeAllViews(); // Clear existing views before adding new ones
 
         for (Article article : articles) {
             View newsItem = getLayoutInflater().inflate(R.layout.news_item, null);
@@ -93,4 +137,14 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.refreshButton) {
+            // Handle refresh button click
+            fetchAndDisplayNews();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

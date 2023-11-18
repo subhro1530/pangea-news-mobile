@@ -30,7 +30,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeActivity extends AppCompatActivity {
 
-//    private static final String API_KEY = "17e5786f01adec6fc3b5c4421cf147d1"; // Replace with your actual GNews API key
     private static final String API_KEY = "f5b874a8cc8c944a5ef4fcf58b8a59b9"; // Replace with your actual GNews API key
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -41,8 +40,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Retrieve selected language from Intent
+        // Retrieve selected language and country from Intent
         String selectedLanguage = getIntent().getStringExtra("SELECTED_LANGUAGE");
+        String selectedCountry = getIntent().getStringExtra("SELECTED_COUNTRY");
 
         // Set up the sidebar toggle
         setUpSidebar();
@@ -51,11 +51,18 @@ public class HomeActivity extends AppCompatActivity {
         initializeRetrofit();
 
         // Fetch and display news on initial load
-        fetchAndDisplayNews(selectedLanguage);
+        fetchAndDisplayNews(selectedLanguage, selectedCountry);
 
         // Refresh Button
         Button refreshButton = findViewById(R.id.refreshButton);
-        refreshButton.setOnClickListener(v -> fetchAndDisplayNews(selectedLanguage));
+        refreshButton.setOnClickListener(v -> {
+            // Retrieve selected language and country from Intent
+            String refreshedLanguage = getIntent().getStringExtra("SELECTED_LANGUAGE");
+            String refreshedCountry = getIntent().getStringExtra("SELECTED_COUNTRY");
+
+            // Use the selected language and country in your API request
+            fetchAndDisplayNews(refreshedLanguage, refreshedCountry);
+        });
     }
 
     private void setUpSidebar() {
@@ -75,13 +82,13 @@ public class HomeActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_top_news:
-                    // Handle Top News click
+                    fetchAndDisplayNews(getIntent().getStringExtra("SELECTED_LANGUAGE"), getIntent().getStringExtra("SELECTED_COUNTRY"));
                     break;
                 case R.id.nav_world:
-                    // Handle World click
+                    fetchAndDisplayNews(getIntent().getStringExtra("SELECTED_LANGUAGE"), "world");
                     break;
                 case R.id.nav_india:
-                    // Handle India click
+                    fetchAndDisplayNews(getIntent().getStringExtra("SELECTED_LANGUAGE"), "in");
                     break;
                 // Add cases for other menu items
             }
@@ -101,9 +108,9 @@ public class HomeActivity extends AppCompatActivity {
         newsApi = retrofit.create(NewsApi.class);
     }
 
-    private void fetchAndDisplayNews(String language) {
+    private void fetchAndDisplayNews(String language, String country) {
         // Make the network request for top headlines
-        Call<NewsResponse> call = newsApi.getTopHeadlines("general", language, "in", 10, API_KEY);
+        Call<NewsResponse> call = newsApi.getTopHeadlines("general", language, country, 10, API_KEY);
 
         call.enqueue(new Callback<NewsResponse>() {
             @Override
@@ -149,20 +156,5 @@ public class HomeActivity extends AppCompatActivity {
 
             newsContainer.addView(newsItem);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.refreshButton) {
-            // Retrieve selected language from Intent
-            String selectedLanguage = getIntent().getStringExtra("SELECTED_LANGUAGE");
-
-            // Use the selected language in your API request
-            fetchAndDisplayNews(selectedLanguage);
-
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

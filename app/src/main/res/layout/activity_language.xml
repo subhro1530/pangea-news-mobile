@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -14,60 +13,72 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/pangeafull" />
 
-    <!-- Choose Your Language Heading -->
+    <!-- Choose Your Language and Country Heading -->
     <TextView
-        android:id="@+id/chooseLanguageHeading"
+        android:id="@+id/chooseLanguageCountryHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/pangeaFullLogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:fontFamily="@font/julius_sans_one"
-        android:text="Choose Your Language"
+        android:text="Choose Your Language and Country"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <!-- Buttons Container -->
-    <LinearLayout
-        android:id="@+id/buttonsContainer"
+    <!-- Language Spinner -->
+    <Spinner
+        android:id="@+id/languageSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/chooseLanguageHeading"
+        android:layout_height="50dp"
+        android:layout_below="@id/chooseLanguageCountryHeading"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_marginRight="20dp"
+        android:background="@drawable/spinner_background"
+        android:fontFamily="@font/julius_sans_one"
+        android:minHeight="10dp"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:cornerRadius="5dp" />
 
-        <!-- English Button -->
-        <Button
-            android:id="@+id/englishButton"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_selector"
-            android:fontFamily="@font/julius_sans_one"
-            android:text="English"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:cornerRadius="50dp" />
+    <!-- Country Spinner -->
+    <Spinner
+        android:id="@+id/countrySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/languageSpinner"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/spinner_background"
+        android:fontFamily="@font/julius_sans_one"
+        android:minHeight="10dp"
+        android:padding="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:cornerRadius="5dp" />
 
-        <!-- Hindi Button -->
-        <Button
-            android:id="@+id/hindiButton"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/button_selector"
-            android:fontFamily="@font/julius_sans_one"
-            android:text="Hindi"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:cornerRadius="50dp" />
-    </LinearLayout>
+    <!-- Next Button -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/countrySpinner"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_selector"
+        android:fontFamily="@font/julius_sans_one"
+        android:text="Next"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:cornerRadius="20dp"
+        android:backgroundTint="#80FFFFFF" />
+
 </RelativeLayout>

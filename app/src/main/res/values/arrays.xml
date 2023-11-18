@@ -1,0 +1,105 @@
+<resources>
+    <string-array name="languages">
+        <item>English</item>
+        <item>Spanish</item>
+        <item>Chinese</item>
+        <item>Hindi</item>
+        <item>Arabic</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Italian</item>
+        <item>Russian</item>
+        <item>Japanese</item>
+        <item>Portuguese</item>
+        <item>Dutch</item>
+        <item>Greek</item>
+        <item>Hebrew</item>
+        <item>Malayalam</item>
+        <item>Marathi</item>
+        <item>Norwegian</item>
+        <item>Romanian</item>
+        <item>Swedish</item>
+        <item>Tamil</item>
+        <item>Telugu</item>
+        <item>Ukrainian</item>
+    </string-array>
+
+    <string-array name="countries">
+        <item>United States</item>
+        <item>United Kingdom</item>
+        <item>China</item>
+        <item>India</item>
+        <item>Germany</item>
+        <item>France</item>
+        <item>Spain</item>
+        <item>Italy</item>
+        <item>Russia</item>
+        <item>Japan</item>
+        <item>Brazil</item>
+        <item>Netherlands</item>
+        <item>Greece</item>
+        <item>Israel</item>
+        <item>Australia</item>
+        <item>Canada</item>
+        <item>Norway</item>
+        <item>Romania</item>
+        <item>Sweden</item>
+        <item>Switzerland</item>
+        <item>Singapore</item>
+        <item>Philippines</item>
+        <item>Portugal</item>
+        <item>Ukraine</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>en</item>
+        <item>es</item>
+        <item>zh</item>
+        <item>hi</item>
+        <item>ar</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>it</item>
+        <item>ru</item>
+        <item>ja</item>
+        <item>pt</item>
+        <item>nl</item>
+        <item>el</item>
+        <item>he</item>
+        <item>ml</item>
+        <item>mr</item>
+        <item>no</item>
+        <item>ro</item>
+        <item>sv</item>
+        <item>ta</item>
+        <item>te</item>
+        <item>uk</item>
+    </string-array>
+
+    <string-array name="country_codes">
+        <item>us</item>
+        <item>gb</item>
+        <item>cn</item>
+        <item>in</item>
+        <item>de</item>
+        <item>fr</item>
+        <item>es</item>
+        <item>it</item>
+        <item>ru</item>
+        <item>ja</item>
+        <item>br</item>
+        <item>nl</item>
+        <item>el</item>
+        <item>il</item>
+        <item>au</item>
+        <item>ca</item>
+        <item>no</item>
+        <item>ro</item>
+        <item>se</item>
+        <item>ch</item>
+        <item>sg</item>
+        <item>ph</item>
+        <item>pt</item>
+        <item>ua</item>
+    </string-array>
+</resources>

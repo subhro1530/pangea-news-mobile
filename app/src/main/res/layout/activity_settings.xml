@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- Toolbar with back arrow -->
+<androidx.appcompat.widget.Toolbar
+android:id="@+id/settingsToolbar"
+android:layout_width="match_parent"
+android:layout_height="?attr/actionBarSize"
+android:background="#000000"
+android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+<ImageView
+    android:id="@+id/backButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:src="@drawable/ic_back_arrow"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:tint="#FFFFFF"/>
+</androidx.appcompat.widget.Toolbar>
+
+    <!-- Settings content -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/settingsToolbar"
+        android:backgroundTint="#000000"
+        android:padding="16dp">
+
+        <!-- Settings heading -->
+        <TextView
+            android:id="@+id/settingsHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Settings"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Notification checkbox -->
+        <CheckBox
+            android:id="@+id/notificationCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsHeading"
+            android:layout_marginTop="16dp"
+            android:text="Receive Notifications for Top Stories" />
+    </RelativeLayout>
+    </RelativeLayout>

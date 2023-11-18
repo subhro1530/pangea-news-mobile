@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -52,6 +53,19 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Open the LanguageActivity when the language button is clicked
                 Intent intent = new Intent(HomeActivity.this, LanguageActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Find the Settings button by ID
+        ImageButton settingsButton = findViewById(R.id.settingsButton);
+
+        // Set click listener for the Settings button
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Open SettingsActivity
+                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }
         });

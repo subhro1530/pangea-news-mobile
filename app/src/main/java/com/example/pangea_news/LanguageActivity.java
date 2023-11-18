@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LanguageActivity extends AppCompatActivity {
@@ -24,32 +23,51 @@ public class LanguageActivity extends AppCompatActivity {
         englishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Set the selected language to English (You may want to store it globally)
-                String selectedLanguage = "English";
+                // Set the selected language to English
+                String selectedLanguage = "en";
 
                 // Example: Show a toast message
-                Toast.makeText(LanguageActivity.this, "Selected Language: " + selectedLanguage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LanguageActivity.this, "Selected Language: English", Toast.LENGTH_SHORT).show();
+
+                // Start HomeActivity and pass the selected language
+                startHomeActivity(selectedLanguage);
             }
         });
 
         hindiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Set the selected language to Hindi (You may want to store it globally)
-                String selectedLanguage = "Hindi";
+                // Set the selected language to Hindi
+                String selectedLanguage = "hi";
 
                 // Example: Show a toast message
-                Toast.makeText(LanguageActivity.this, "Selected Language: " + selectedLanguage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LanguageActivity.this, "Selected Language: Hindi", Toast.LENGTH_SHORT).show();
+
+                // Start HomeActivity and pass the selected language
+                startHomeActivity(selectedLanguage);
             }
         });
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Move to the home page
-                startActivity(new Intent(LanguageActivity.this, HomeActivity.class));
-                finish();
+                // Default to English if no language is selected
+                String selectedLanguage = "en";
+
+                // Example: Show a toast message
+                Toast.makeText(LanguageActivity.this, "Selected Language: English (Default)", Toast.LENGTH_SHORT).show();
+
+                // Start HomeActivity and pass the selected language
+                startHomeActivity(selectedLanguage);
             }
         });
+    }
+
+    private void startHomeActivity(String selectedLanguage) {
+        // Start HomeActivity and pass the selected language
+        Intent intent = new Intent(LanguageActivity.this, HomeActivity.class);
+        intent.putExtra("SELECTED_LANGUAGE", selectedLanguage);
+        startActivity(intent);
+        finish();
     }
 }

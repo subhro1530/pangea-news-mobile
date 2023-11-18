@@ -40,17 +40,26 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // Retrieve selected language from Intent
+        String selectedLanguage = getIntent().getStringExtra("SELECTED_LANGUAGE");
+
+        // Set up the sidebar toggle
+        setUpSidebar();
+
+        // Initialize Retrofit and NewsApi
+        initializeRetrofit();
+
+        // Fetch and display news on initial load
+        fetchAndDisplayNews(selectedLanguage);
+
+        // Refresh Button
+        Button refreshButton = findViewById(R.id.refreshButton);
+        refreshButton.setOnClickListener(v -> fetchAndDisplayNews(selectedLanguage));
+    }
+
+    private void setUpSidebar() {
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
-
-        // Initialize Retrofit
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://gnews.io/api/v4/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        // Create the NewsApi service
-        newsApi = retrofit.create(NewsApi.class);
 
         // Set up the sidebar toggle
         ImageView sidebarImageView = findViewById(R.id.sidebarImageView);
@@ -78,18 +87,22 @@ public class HomeActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
-
-        // Fetch and display news on initial load
-        fetchAndDisplayNews();
-
-        // Refresh Button
-        Button refreshButton = findViewById(R.id.refreshButton);
-        refreshButton.setOnClickListener(v -> fetchAndDisplayNews());
     }
 
-    private void fetchAndDisplayNews() {
+    private void initializeRetrofit() {
+        // Initialize Retrofit
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://gnews.io/api/v4/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        // Create the NewsApi service
+        newsApi = retrofit.create(NewsApi.class);
+    }
+
+    private void fetchAndDisplayNews(String language) {
         // Make the network request for top headlines
-        Call<NewsResponse> call = newsApi.getTopHeadlines("general", "en", "in", 10, API_KEY);
+        Call<NewsResponse> call = newsApi.getTopHeadlines("general", language, "in", 10, API_KEY);
 
         call.enqueue(new Callback<NewsResponse>() {
             @Override
@@ -140,8 +153,12 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.refreshButton) {
-            // Handle refresh button click
-            fetchAndDisplayNews();
+            // Retrieve selected language from Intent
+            String selectedLanguage = getIntent().getStringExtra("SELECTED_LANGUAGE");
+
+            // Use the selected language in your API request
+            fetchAndDisplayNews(selectedLanguage);
+
             return true;
         }
 

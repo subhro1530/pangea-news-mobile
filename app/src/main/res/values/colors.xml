@@ -10,4 +10,7 @@
     <color name="deep_red">#8B0000</color>
     <color name="deep_red_dark">#610000</color> <!-- Adjust the darkness if needed -->
     <color name="deep_red_accent">#FF5252</color> <!-- Adjust the accent color if needed -->
+    <color name="blue">#2196F3</color>
+    <color name="green">#4CAF50</color>
+    <color name="violet">#673AB7</color>
 </resources>

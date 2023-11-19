@@ -49,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //  For Testing
+//    private void openSettingsActivity() {
+//        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+//        startActivity(intent);
+//    }
+
     // Helper method to get the duration of the GIF
     private int getGifDuration(int gifResource) {
         try {

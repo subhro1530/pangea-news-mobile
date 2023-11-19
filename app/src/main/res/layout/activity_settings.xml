@@ -4,55 +4,106 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@android:color/black">
 
     <!-- Toolbar with back arrow -->
-<androidx.appcompat.widget.Toolbar
-android:id="@+id/settingsToolbar"
-android:layout_width="match_parent"
-android:layout_height="?attr/actionBarSize"
-android:background="#000000"
-android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-<ImageView
-    android:id="@+id/backButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="start"
-    android:src="@drawable/ic_back_arrow"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    app:tint="#FFFFFF"/>
-</androidx.appcompat.widget.Toolbar>
-
-    <!-- Settings content -->
-    <RelativeLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/settingsToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/settingsToolbar"
-        android:backgroundTint="#000000"
-        android:padding="16dp">
+        android:layout_height="?attr/actionBarSize"
+        android:background="#E94848"
+        android:elevation="4dp"
+        app:titleTextColor="@android:color/white">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_arrow"
+            app:tint="@android:color/white"/>
 
         <!-- Settings heading -->
         <TextView
             android:id="@+id/settingsHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:text="Settings"
+            android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"/>
+    </com.google.android.material.appbar.MaterialToolbar>
 
-        <!-- Notification checkbox -->
-        <CheckBox
-            android:id="@+id/notificationCheckbox"
+    <!-- Settings content -->
+    <LinearLayout
+        android:id="@+id/settingsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/settingsToolbar"
+        android:orientation="vertical"
+        android:background="@android:color/black"
+        android:padding="16dp">
+
+        <!-- General heading -->
+        <TextView
+            android:id="@+id/generalHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/settingsHeading"
             android:layout_marginTop="16dp"
-            android:text="Receive Notifications for Top Stories" />
-    </RelativeLayout>
-    </RelativeLayout>
+            android:layout_marginStart="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="General"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Button with Appearance heading -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/appearanceButton"
+            android:layout_width="348dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#E94848"
+            app:borderWidth="2dp"
+            app:cornerRadius="8dp"
+            android:fontFamily="@font/poppins"
+            android:icon="@drawable/ic_appearance"
+            android:iconTint="@android:color/white"
+            android:text="Change app looks"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="normal|bold" />
+
+        <CheckBox
+            android:id="@+id/notificationCheckbox1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Receive silent notifications"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:buttonTint="#E94848"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- Notification checkbox 2 -->
+        <CheckBox
+            android:id="@+id/notificationCheckbox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Receive Notifications for Top Stories"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:buttonTint="#E94848"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"/>
+    </LinearLayout>
+</RelativeLayout>

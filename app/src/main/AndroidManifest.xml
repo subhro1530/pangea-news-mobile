@@ -32,6 +32,10 @@
             android:name=".HomeActivity">
         </activity>
 
+        <activity
+            android:name=".UploadActivity">
+        </activity>
+
         <!-- SettingsActivity -->
         <activity android:name=".SettingsActivity" />
 

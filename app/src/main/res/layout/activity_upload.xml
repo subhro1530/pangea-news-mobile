@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    app:circularflow_defaultRadius="20dp"
+    app:circularflow_radiusInDP="20dp">
+
+    <!-- Toolbar for back button -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:titleTextColor="@android:color/white">
+
+        <!-- Title "Upload" -->
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upload"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Image Gallery ScrollView -->
+    <ScrollView
+        android:id="@+id/galleryScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@+id/cameraButton"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:id="@+id/galleryContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp" />
+
+    </ScrollView>
+
+    <!-- Camera Button -->
+    <ImageButton
+        android:id="@+id/cameraButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/deep_red_dark"
+        android:backgroundTint="@color/deep_red_dark"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_record" />
+</RelativeLayout>

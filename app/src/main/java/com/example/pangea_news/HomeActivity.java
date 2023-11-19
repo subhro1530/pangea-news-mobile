@@ -47,6 +47,14 @@ public class HomeActivity extends AppCompatActivity {
 
         ImageView languageButton = findViewById(R.id.languageButton);
 
+        ImageButton uploadButton = findViewById(R.id.uploadButton);
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUploadActivity();
+            }
+        });
+
         // Set OnClickListener for the language button
         languageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +102,13 @@ public class HomeActivity extends AppCompatActivity {
             fetchAndDisplayNews(refreshedLanguage, refreshedCountry);
         });
     }
+
+    private void openUploadActivity() {
+        // Open the UploadActivity when the upload button is clicked
+        Intent intent = new Intent(HomeActivity.this, UploadActivity.class);
+        startActivity(intent);
+    }
+
 
     private void setUpSidebar() {
         drawerLayout = findViewById(R.id.drawerLayout);

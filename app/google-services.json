@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1067126355345",
+    "project_id": "pangeanewsm",
+    "storage_bucket": "pangeanewsm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067126355345:android:d17675843751d61bffd630",
+        "android_client_info": {
+          "package_name": "com.example.pangea_news"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFamzHI00qP-HRIgS9bP36JjikyjamJ5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
